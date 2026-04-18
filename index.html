@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hritvi - My Forever Love ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <source src="music.mp3">
+    <!-- 🎵 BACKGROUND MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mp3">
+</audio>
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts"></div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <div class="heart-animation">💖</div>
+                <h1 class="name-animation">Hritvi</h1>
+                <p class="subtitle">My Beautiful Love, My Everything 💕</p>
+                <div class="love-stats">
+                    <div class="stat">
+                        <span class="number" data-target="365">365</span>
+                        <span>Days Loving You</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number" data-target="∞">∞</span>
+                        <span>More to Come</span>
+                    </div>
+                </div>
+                <button class="cta-btn" onclick="scrollToSection('message')">
+                    💌 Read My Message
+                </button>
+            </div>
+        </section>
+
+        <!-- Love Message Section -->
+        <section class="message-section" id="message">
+            <div class="message-card">
+                <div class="gif-container">
+                    <img src="https://media.giphy.com/media/Ju7l5y9osyymQ/giphy.gif" alt="Love GIF" class="love-gif">
+                </div>
+                <h2>Dear Hritvi 💝</h2>
+                <p class="love-letter">
+                    Every moment with you feels like a dream. Your smile lights up my world, 
+                    your laugh is my favorite song, and your love is my greatest treasure. 
+                    You make every day better just by being you. I love you more than words 
+                    can express, today and always! 🌹
+                </p>
+                <button class="play-btn" onclick="showQuestion()">💭 Ask Me Anything</button>
+            </div>
+        </section>
+
+        <!-- Interactive Questions -->
+        <section class="question-section" id="questions">
+            <div class="question-container">
+                <h2>What Makes You Special? ✨</h2>
+                <div class="question active" data-answer="1">
+                    <h3>1. Your Smile</h3>
+                    <p>Your smile can brighten the darkest days! 😍</p>
+                </div>
+                <div class="question" data-answer="2">
+                    <h3>2. Your Kind Heart</h3>
+                    <p>You have the most beautiful soul I've ever known! 💖</p>
+                </div>
+                <div class="question" data-answer="3">
+                    <h3>3. Your Laughter</h3>
+                    <p>Your laugh is music to my ears! 🎶</p>
+                </div>
+                <div class="question" data-answer="4">
+                    <h3>4. Everything About You</h3>
+                    <p>I love every single thing about you! ❤️</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Memories Section -->
+        <section class="memories-section">
+            <h2>Our Beautiful Memories 📸</h2>
+            <div class="memories-grid">
+                <div class="memory-card">
+                    <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="First Date">
+                    <p>Our First Date 🌟</p>
+                </div>
+                <div class="memory-card">
+                    <img src="https://media.giphy.com/media/xT9IgzoX5LXq3J9gHu/giphy.gif" alt="Hugs">
+                    <p>Your Warm Hugs 🤗</p>
+                </div>
+                <div class="memory-card">
+                    <img src="https://media.giphy.com/media/l0MYA6bNq0M45G6ly/giphy.gif" alt="Dancing">
+                    <p>Dancing Together 💃🕺</p>
+                </div>
+                <div class="memory-card">
+                    <img src="https://media.giphy.com/media/26ufnwz3wDUli7GU0/giphy.gif" alt="Forever">
+                    <p>Forever Together 💍</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Promise -->
+        <section class="promise-section">
+            <div class="promise-card">
+                <div class="floating-hearts-small"></div>
+                <h2>My Promise to You 💍</h2>
+                <p class="promise-text">
+                    Hritvi, you are my today and all of my tomorrows. 
+                    I promise to love you, cherish you, and make you smile every single day.
+                </p>
+                <div class="love-button" onclick="showFinalLove()">
+                    <span>I Love You Forever 💖</span>
+                </div>
+                <div class="final-love hidden">
+                    <h3>💕 HRITVI 💕</h3>
+                    <p>You make my heart skip a beat! ❤️</p>
+                </div>
+                <div id="heartGame" class="hidden">
+                <h2>Catch my love 💖</h2>
+                <p>Catch as many hearts as you can 😌</p>
+
+                <div id="gameArea"></div>
+                <p id="score">Score: 0</p>
+
+                <button onclick="endGame()">Finish 💌</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <!-- 🎀 SOFT RIBBON BACKGROUND -->
+<div id="ribbon-bg"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+
+<script>
+let pgFront, pgBack;
+let textHeight;
+let fontLoaded = false;
+
+const phrase = ["Hritvi ❤️", "I Like You", "✨"];
+
+function setup() {
+  let canvas = createCanvas(window.innerWidth, window.innerHeight);
+  canvas.parent("ribbon-bg");
+
+  // 👇 LOW VISIBILITY (perfect aesthetic)
+  canvas.style("opacity", "0.18");
+  canvas.style("pointer-events", "none");
+
+  document.fonts.ready.then(() => {
+    fontLoaded = true;
+    updateBuffers();
+  });
+}
+
+function updateBuffers() {
+  let fontSize = height * 0.18;
+  let leading = fontSize * 0.8;
+
+  textHeight = (phrase.length * leading);
+
+  pgFront = createGraphics(width, textHeight * 2);
+  pgBack = createGraphics(width, textHeight * 2);
+
+  const setupBuffer = (g, col) => {
+    g.textAlign(CENTER, TOP);
+    g.textFont('Poppins');
+    g.textStyle(BOLD);
+    g.textSize(fontSize);
+    g.fill(col);
+
+    for (let loop = 0; loop < 2; loop++) {
+      let yOff = loop * textHeight;
+      phrase.forEach((txt, i) => {
+        g.text(txt, g.width / 2, yOff + (i * leading));
+      });
+    }
+  };
+
+  setupBuffer(pgFront, "#ffffff");
+  setupBuffer(pgBack, "#ff9aa2");
+}
+
+function draw() {
+  clear();
+
+  if (!fontLoaded) return;
+
+  let step = 2;
+
+  for (let y = 0; y < height; y += step) {
+    let angle = (y * 0.006);
+    let sX = cos(angle);
+
+    let activeBuffer = sX > 0 ? pgFront : pgBack;
+
+    let w = width * Math.abs(sX) * 0.5;
+    let x = (width - w) / 2;
+
+    let sourceY = y % textHeight;
+
+    image(activeBuffer, x, y, w, step, 0, sourceY, width, step);
+  }
+}
+
+function windowResized() {
+  resizeCanvas(window.innerWidth, window.innerHeight);
+  if (fontLoaded) updateBuffers();
+}
+</script>
+<!-- 🎵 BACKGROUND MUSIC -->
+</audio>
+<div id="lyricsBox">
+    <p id="lyricsText">💖</p>
+</div>
+</body>
+</html>

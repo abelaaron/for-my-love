@@ -1,0 +1,412 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+    min-height: 100vh;
+    position: relative;
+}
+
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-hearts::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".7em" font-size="70">💖💕💗💖</text></svg>') repeat;
+    animation: float 20s infinite linear;
+    opacity: 0.1;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); }
+    100% { transform: translateY(-100px) rotate(360deg); }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.heart-animation {
+    font-size: 4rem;
+    animation: heartbeat 1.5s infinite;
+    display: block;
+    margin-bottom: 20px;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.name-animation {
+    font-family: 'Dancing Script', cursive;
+    font-size: 5rem;
+    font-weight: 700;
+    margin: 20px 0;
+    background: linear-gradient(45deg, #ff6b6b, #feca57, #ff9ff3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { filter: drop-shadow(0 0 10px #ff6b6b); }
+    to { filter: drop-shadow(0 0 20px #feca57); }
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease 0.5s both;
+}
+
+.love-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.stat {
+    background: rgba(255,255,255,0.2);
+    padding: 20px 30px;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ff6b6b;
+}
+
+.cta-btn, .play-btn, .love-button {
+    background: linear-gradient(45deg, #ff6b6b, #feca57);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+}
+
+.cta-btn:hover, .play-btn:hover, .love-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255,107,107,0.6);
+}
+
+/* Message Section */
+.message-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.message-card {
+    background: rgba(255,255,255,0.95);
+    padding: 60px 40px;
+    border-radius: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.gif-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.love-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.love-letter {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+/* Questions Section */
+.question-section {
+    padding: 80px 20px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+}
+
+.question-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.question {
+    background: white;
+    padding: 30px;
+    margin: 20px 0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    opacity: 0.6;
+    transform: translateY(20px);
+}
+
+.question.active, .question:hover {
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: 0 20px 50px rgba(255,107,107,0.3);
+}
+
+/* Memories */
+.memories-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.memories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.memory-card {
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.memory-card:hover {
+    transform: translateY(-10px);
+}
+
+.memory-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+/* Promise Section */
+.promise-section {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.promise-card {
+    background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(254,202,87,0.1));
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 60px 40px;
+    border-radius: 30px;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.floating-hearts-small {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".5em" font-size="30">💖💕</text></svg>') repeat;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.promise-text {
+    font-size: 1.4rem;
+    margin: 30px 0;
+    color: #333;
+}
+
+.final-love {
+    margin-top: 30px;
+    padding: 30px;
+    background: linear-gradient(45deg, #ff6b6b, #feca57);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.5s ease;
+}
+
+.hidden.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .name-animation { font-size: 3.5rem; }
+    .love-stats { gap: 20px; }
+    .stat { padding: 15px 20px; }
+    .message-card { padding: 40px 20px; }
+    .gif-container { width: 150px; height: 150px; }
+}
+/* Add these animations to style.css */
+@keyframes sparkle {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2) rotate(180deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0) rotate(360deg);
+        opacity: 0;
+    }
+}
+#heartGame {
+  margin-top: 40px;
+  text-align: center;
+}
+
+#gameArea {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.falling-heart {
+  position: absolute;
+  top: -30px;
+  font-size: 24px;
+  cursor: pointer;
+  animation: fall 3s linear forwards;
+}
+#lyricsBox {
+    position: fixed;
+    bottom: 8%;
+    width: 100%;
+    text-align: center;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+#lyricsText {
+    font-size: 1.8rem;
+    color: white;
+    font-family: 'Dancing Script', cursive;
+    text-shadow: 0 0 10px #ff6b6b, 0 0 20px #ff9ff3;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+/* active animation */
+.show-lyric {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1.05);
+}
+
+/* typing effect */
+.typing {
+    border-right: 2px solid white;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(350px);
+  }
+}
+#ribbon-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* make sure content is above */
+.container {
+  position: relative;
+  z-index: 2;
+}
+.heart-animation, .name-animation {
+    transition: transform 0.2s ease;
+}
+#lyricsText {
+    animation: pulseGlow 1.5s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    from { text-shadow: 0 0 10px #ff6b6b; }
+    to { text-shadow: 0 0 25px #ff9ff3; }
+}
